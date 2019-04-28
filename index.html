@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>tap me</title>
+	<style>
+		* {
+			box-sizing: border-box;
+			padding: 0;
+			margin: 0;
+			color: white;
+		}
+
+		.container {
+			display: grid;
+			grid-template-columns: auto auto auto;
+			grid-gap: 20px;
+			width: 100vw;
+			height: 90vh;
+			text-align: center;
+			font-family: 'lato';
+			font-size: 10pt
+		}
+
+		.container>.box {
+			background: #3d3d3d;
+		}
+
+		span {
+			width: 30px;
+			height: 30px
+		}
+
+		.box {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		#play-button{
+			color: #3d3d3d;
+			border: none;
+			
+		}
+		#play-button:hover{
+			background: #3d3d3d;
+			color: white
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+
+		<div class="box 0"><span></span></div>
+		<div class="box 1"><span></span></div>
+		<div class="box 2"><span></span></div>
+		<div class="box 3"><span></span></div>
+		<div class="box 4"><span></span></div>
+		<div class="box 5"><span></span></div>
+		<div class="box 6"><span></span></div>
+		<div class="box 7"><span></span></div>
+		<div class="box 8"><span></span></div>
+		<input type="button" id="play-button" value="PLAY GAME">
+		<div class="box 10"><span></span></div>
+		
+		
+	</div>
+
+	<script>
+		let boxes = document.getElementsByClassName("box");
+		
+		let score = `<h3>SCORE</h3>`
+		let text = `<h3>hello</h3>`;
+
+		boxes = Array.from(boxes);
+		let scoreBoard = boxes[9]
+
+		let randomNumber;
+//		let sec = 1000;	
+//		var i
+		document.getElementById("play-button").addEventListener("click", function(e){
+			let randomizeNumber = function() {
+			setInterval(function() {
+				randomNumber = Math.abs(Math.ceil(Math.random() * 9 - 1));
+				
+				
+			}, 3000)
+			
+			console.log(randomNumber)
+			
+
+		}
+
+		function displaytext() {
+//			boxes[4].innerHTML = text;
+//			boxes.[randomNumber -1].innerHTML = ""
+//			boxes[randomNumber].innerHTML = text
+			
+			
+			setInterval(function(){
+			boxes[randomNumber].innerHTML = text;
+			}, 3000)
+			
+//			var arr = [0,1,2,3,4,5,6,7,8]
+//			for(i  = 0; i < arr.length; i++){
+//				
+//			}
+			 
+			//2 remove 3 create 5/2 display 
+			
+			setInterval(function(){
+			if( boxes[randomNumber].innerHTML == text ){
+			
+			boxes[randomNumber].innerHTML = "" ;
+			
+			}}, 4000)
+			
+			
+		}
+
+
+//		function changePlace() {
+//			setInterval(function() {
+//				displaytext()
+//			}, 3000)
+//		}
+			randomizeNumber()
+//		changePlace()
+		displaytext()
+		e.preventDefault()
+		})
+		
+		var scoreNum = 0
+		
+		scoreBoard.style.backgroundColor = "grey"
+		var ok
+		
+		for(var count = 0 ; count < boxes.length; count++){
+		boxes[count].addEventListener("click", function(e){
+			if(e.target.classList.contains(`${randomNumber}`)){
+				e.target.style.backgroundColor = "green";
+				scoreNum += 5
+				
+				setTimeout(function(){
+				e.target.style.backgroundColor = "#3d3d3d"
+				}, 2000)
+				ok = true;
+				
+			}
+			
+			else{
+				e.target.style.backgroundColor ="red";
+				setTimeout(function(){
+				e.target.style.backgroundColor = "#3d3d3d"
+				}, 2000)
+				
+			}
+//			scoreNum += 5
+//			console.log(scoreNum)
+//			console.log(e.target.classList.contains(3))
+			scoreBoard.innerHTML = `</h3>${score}: ${scoreNum}</h3>`
+			e.preventDefault()
+			
+		})
+		}
+		console.log(randomNumber)
+
+		
+
+//		console.log(boxes[4])
+
+	</script>
+</body>
+
+</html>
