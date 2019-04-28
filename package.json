@@ -1,0 +1,19 @@
+{
+  "name": "tapme",
+  "version": "1.0.0",
+  "description": "tap me game",
+  "main": "\u001b[D\u001b[Cindex.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seysil21/test.git"
+  },
+  "author": "Joseph Sey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/seysil21/test/issues"
+  },
+  "homepage": "https://github.com/seysil21/test#readme"
+}
